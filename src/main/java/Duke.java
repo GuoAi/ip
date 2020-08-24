@@ -28,11 +28,19 @@ import java.util.Scanner;
     }
 
     public static void list() {
+        String yesOrNo;
         System.out.println("    ____________________________________________________________");
+        System.out.println("     Here are the tasks in your list:");
         for (int i = 0; i < tasks.size(); i++) {
-            System.out.println("     " + (i + 1) + ". " + tasks.get(i).getName());
+            if (tasks.get(i).getIsDone()) {
+                yesOrNo = "✓";
+            } else {
+                yesOrNo = "✗";
+            }
+            System.out.println("     " + (i + 1) + ".[" + yesOrNo + "]" + tasks.get(i).getDescription());
         }
         System.out.println("    ____________________________________________________________");
+        System.out.println();
     }
 
     public static void add(String task) {
@@ -58,6 +66,14 @@ import java.util.Scanner;
                 return;
             } else if (command.equals("list")) {
                 list();
+            } else if (command.contains("done")) {
+              String[] words = command.split(" ");
+              int taskNum = Integer.valueOf(words[1]) - 1;
+              tasks.get(taskNum).markAsDone();
+              System.out.println("    ____________________________________________________________");
+              System.out.println("     Nice! I've marked this task as done:");
+              System.out.println("       [✓] " + tasks.get(taskNum).getDescription());
+              System.out.println("    ____________________________________________________________");
             } else {
                 add(command);
             }
