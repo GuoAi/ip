@@ -4,11 +4,11 @@ import java.util.Scanner;
  class Duke {
     static Scanner sc = new Scanner(System.in);
     private static ArrayList<Task> tasks = new ArrayList<>();
-    public String logo = " ____        _        \n"
-            + "|  _ \\ _   _| | _____ \n"
-            + "| | | | | | | |/ / _ \\\n"
-            + "| |_| | |_| |   <  __/\n"
-            + "|____/ \\__,_|_|\\_\\___|\n";
+    public static String logo = "    ____        _        \n"
+            + "    |  _ \\ _   _| | _____ \n"
+            + "    | | | | | | | |/ / _ \\\n"
+            + "    | |_| | |_| |   <  __/\n"
+            + "    |____/ \\__,_|_|\\_\\___|\n";
 
     public static void echo(String command) {
         System.out.println("    ____________________________________________________________");
@@ -19,6 +19,7 @@ import java.util.Scanner;
 
     public static void greet() {
         System.out.println("    ____________________________________________________________");
+        System.out.println(logo);
         System.out.println("     Hello! I'm Duke");
         System.out.println("     What can I do for you?");
         System.out.println("    ____________________________________________________________");
