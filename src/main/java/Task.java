@@ -1,9 +1,9 @@
-public class Task {
+public abstract class Task {
     protected String description;
     protected boolean isDone;
 
-    public Task(String name) {
-        this.description = name;
+    public Task(String description) {
+        this.description = description;
         this.isDone = false;
     }
 
@@ -18,4 +18,6 @@ public class Task {
     public void markAsDone() {
         this.isDone = true;
     }
+
+    public abstract String toString();
 }
