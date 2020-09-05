@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
  class Duke {
@@ -9,6 +10,7 @@ import java.util.Scanner;
             + "    | | | | | | | |/ / _ \\\n"
             + "    | |_| | |_| |   <  __/\n"
             + "    |____/ \\__,_|_|\\_\\___|\n";
+    private static String[] commands = {"todo", "event", "deadline"};
 
     public static void echo(String command) {
         System.out.println("    ____________________________________________________________");
@@ -44,57 +46,92 @@ import java.util.Scanner;
         System.out.println();
     }
 
-    public static void add(String command) {
+    public static void add(String command) throws DukeException {
         Task task;
-        if (command.startsWith("todo")) {
-            String todoString = command.substring(5);
-            task = new Todo(todoString);
-            tasks.add(task);
-        } else if (command.startsWith("deadline")) {
-            String deadlineString = command.substring(9);
-            String[] deadlineStrings = deadlineString.split(" /by ");
-            task = new Deadline(deadlineStrings[0], deadlineStrings[1]);
-            tasks.add(task);
-        } else if (command.startsWith("event")) {
-            String eventString = command.substring(6);
-            String[] eventStrings = eventString.split(" /at ");
-            task = new Event(eventStrings[0], eventStrings[1]);
-            tasks.add(task);
-        } else {
-            System.out.println("     Please enter valid commands");
-            return ;
+        try {
+            if (command.startsWith("todo")) {
+                String todoString = "";
+                try {
+                    todoString = command.substring(5);
+                } catch (StringIndexOutOfBoundsException e) {
+                    throw new DukeException("     ☹ OOPS!!! The description of a todo cannot be empty.");
+                }
+                task = new Todo(todoString);
+                tasks.add(task);
+            } else if (command.startsWith("deadline")) {
+                String deadlineString = "";
+                try {
+                    deadlineString = command.substring(9);
+                } catch (StringIndexOutOfBoundsException e) {
+                    throw new DukeException("     ☹ OOPS!!! The description of a deadline cannot be empty.");
+                }
+                String[] deadlineStrings = deadlineString.split(" /by ");
+                task = new Deadline(deadlineStrings[0], deadlineStrings[1]);
+                tasks.add(task);
+            } else if (command.startsWith("event")) {
+                String eventString = "";
+                try {
+                    eventString = command.substring(6);
+                } catch (StringIndexOutOfBoundsException e) {
+                    throw new DukeException("     ☹ OOPS!!! The description of an event cannot be empty.");
+                }
+                String[] eventStrings = eventString.split(" /at ");
+                task = new Event(eventStrings[0], eventStrings[1]);
+                tasks.add(task);
+            } else {
+                System.out.println("     Please enter valid commands");
+                return;
+            }
+            System.out.println("    ____________________________________________________________");
+            System.out.println("     Got it. I've added this task:");
+            System.out.println("       " + task.toString());
+            System.out.println("     Now you have " + tasks.size() + " tasks in the list.");
+            System.out.println("    ____________________________________________________________");
+            System.out.println();
+        } catch (DukeException e) {
+            throwDukeException(e);
         }
-        System.out.println("    ____________________________________________________________");
-        System.out.println("     Got it. I've added this task:");
-        System.out.println("       " + task.toString());
-        System.out.println("     Now you have " + tasks.size() + " tasks in the list.");
-        System.out.println("    ____________________________________________________________");
-        System.out.println();
     }
 
-    public static void execCommand() {
+    public static void execCommand() throws DukeException {
         while (sc.hasNextLine()) {
             String command = sc.nextLine();
-            if (command.equals("bye")) {
-                exit();
-                return;
-            } else if (command.equals("list")) {
-                list();
-            } else if (command.contains("done")) {
-                String[] words = command.split(" ");
-                int taskNum = Integer.valueOf(words[1]) - 1;
-                tasks.get(taskNum).markAsDone();
-                System.out.println("    ____________________________________________________________");
-                System.out.println("     Nice! I've marked this task as done:");
-                System.out.println("       [✓] " + tasks.get(taskNum).getDescription());
-                System.out.println("    ____________________________________________________________");
-            } else {
-                add(command);
+            try {
+                if (command.equals("bye")) {
+                    exit();
+                    return;
+                } else if (command.equals("list")) {
+                    list();
+                } else if (command.contains("done")) {
+                    String[] words = command.split(" ");
+                    int taskNum = Integer.valueOf(words[1]) - 1;
+                    if (taskNum >= tasks.size()) {
+                        throw new DukeException("     ☹ OOPS!!! There is no such task in your list");
+                    }
+                    tasks.get(taskNum).markAsDone();
+                    System.out.println("    ____________________________________________________________");
+                    System.out.println("     Nice! I've marked this task as done:");
+                    System.out.println("       [✓] " + tasks.get(taskNum).getDescription());
+                    System.out.println("    ____________________________________________________________");
+                } else if (Arrays.asList(commands).contains(command)) {
+                    add(command);
+                } else {
+                    throw new DukeException("     ☹ OOPS!!! I'm sorry, but I don't know what that means :-(");
+                }
+            } catch (DukeException e) {
+                throwDukeException(e);
             }
         }
     }
 
-    public static void main(String[] args) {
+    public static void throwDukeException(DukeException e) {
+        System.out.println("    ____________________________________________________________");
+        System.out.println(e.toString());
+        System.out.println("    ____________________________________________________________");
+        System.out.println();
+    }
+
+    public static void main(String[] args) throws DukeException {
         greet();
         execCommand();
     }
