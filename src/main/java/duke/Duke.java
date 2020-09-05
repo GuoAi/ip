@@ -1,3 +1,10 @@
+package duke;
+
+import duke.task.Deadline;
+import duke.task.Event;
+import duke.task.Task;
+import duke.task.Todo;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -22,7 +29,7 @@ import java.util.Scanner;
     public static void greet() {
         System.out.println("    ____________________________________________________________");
         System.out.println(logo);
-        System.out.println("     Hello! I'm Duke");
+        System.out.println("     Hello! I'm duke.Duke");
         System.out.println("     What can I do for you?");
         System.out.println("    ____________________________________________________________");
         System.out.println();
@@ -46,7 +53,7 @@ import java.util.Scanner;
         System.out.println();
     }
 
-    public static void add(String command) throws DukeException {
+    public static void add(String command) {
         Task task;
         try {
             if (command.startsWith("todo")) {
@@ -66,7 +73,11 @@ import java.util.Scanner;
                     throw new DukeException("     ☹ OOPS!!! The description of a deadline cannot be empty.");
                 }
                 String[] deadlineStrings = deadlineString.split(" /by ");
-                task = new Deadline(deadlineStrings[0], deadlineStrings[1]);
+                try {
+                    task = new Deadline(deadlineStrings[0], deadlineStrings[1]);
+                } catch (ArrayIndexOutOfBoundsException e) {
+                    throw new DukeException("     Please enter your deadline in the correct format.\n     Example: deadline return book /by Sunday");
+                }
                 tasks.add(task);
             } else if (command.startsWith("event")) {
                 String eventString = "";
@@ -76,7 +87,11 @@ import java.util.Scanner;
                     throw new DukeException("     ☹ OOPS!!! The description of an event cannot be empty.");
                 }
                 String[] eventStrings = eventString.split(" /at ");
-                task = new Event(eventStrings[0], eventStrings[1]);
+                try {
+                    task = new Event(eventStrings[0], eventStrings[1]);
+                } catch (ArrayIndexOutOfBoundsException e) {
+                    throw new DukeException("     Please enter your deadline in the correct format.\n     Example: event project meeting /at Mon 2-4pm");
+                }
                 tasks.add(task);
             } else {
                 System.out.println("     Please enter valid commands");
@@ -93,7 +108,7 @@ import java.util.Scanner;
         }
     }
 
-    public static void execCommand() throws DukeException {
+    public static void execCommand() {
         while (sc.hasNextLine()) {
             String command = sc.nextLine();
             try {
@@ -113,7 +128,8 @@ import java.util.Scanner;
                     System.out.println("     Nice! I've marked this task as done:");
                     System.out.println("       [✓] " + tasks.get(taskNum).getDescription());
                     System.out.println("    ____________________________________________________________");
-                } else if (Arrays.asList(commands).contains(command)) {
+                    System.out.println();
+                } else if (Arrays.asList(commands).contains(command.split(" ")[0])) {
                     add(command);
                 } else {
                     throw new DukeException("     ☹ OOPS!!! I'm sorry, but I don't know what that means :-(");
@@ -131,7 +147,7 @@ import java.util.Scanner;
         System.out.println();
     }
 
-    public static void main(String[] args) throws DukeException {
+    public static void main(String[] args) {
         greet();
         execCommand();
     }
