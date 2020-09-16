@@ -20,37 +20,29 @@ import java.util.Scanner;
     private static String[] commands = {"todo", "event", "deadline"};
 
     public static void echo(String command) {
-        System.out.println("    ____________________________________________________________");
-        System.out.println("     " + command);
-        System.out.println("    ____________________________________________________________");
-        System.out.println();
+        dukePrint("     " + command);
     }
 
     public static void greet() {
-        System.out.println("    ____________________________________________________________");
         System.out.println(logo);
-        System.out.println("     Hello! I'm duke.Duke");
-        System.out.println("     What can I do for you?");
-        System.out.println("    ____________________________________________________________");
-        System.out.println();
+        dukePrint("     Hello! I'm duke.Duke\n     What can I do for you?");
     }
 
     public static void exit() {
-        System.out.println("    ____________________________________________________________");
-        System.out.println("     Bye. Hope to see you again soon!");
-        System.out.println("    ____________________________________________________________");
-        System.out.println();
+        dukePrint("     Bye. Hope to see you again soon!");
     }
 
     public static void list() {
         String yesOrNo;
-        System.out.println("    ____________________________________________________________");
-        System.out.println("     Here are the tasks in your list:");
+        String message = "";
         for (int i = 0; i < tasks.size(); i++) {
-            System.out.println("     " + (i + 1) + "." + tasks.get(i).toString());
+            if (i == 0) {
+                message = message + "     " + (i + 1) + "." + tasks.get(i).toString();
+            } else {
+                message = message + "\n     " + (i + 1) + "." + tasks.get(i).toString();
+            }
         }
-        System.out.println("    ____________________________________________________________");
-        System.out.println();
+        dukePrint("     Here are the tasks in your list:\n" + message);
     }
 
     public static void add(String command) {
@@ -97,14 +89,19 @@ import java.util.Scanner;
                 System.out.println("     Please enter valid commands");
                 return;
             }
-            System.out.println("    ____________________________________________________________");
-            System.out.println("     Got it. I've added this task:");
-            System.out.println("       " + task.toString());
-            System.out.println("     Now you have " + tasks.size() + " tasks in the list.");
-            System.out.println("    ____________________________________________________________");
-            System.out.println();
+            dukePrint("     Got it. I've added this task:\n       " + task.toString() +"\n     Now you have " + tasks.size() + " tasks in the list.");
         } catch (DukeException e) {
             throwDukeException(e);
+        }
+    }
+
+    public static void delete(int taskNum) {
+        if (taskNum > tasks.size() || taskNum < 1) {
+            dukePrint("     You do not have this task in the list.");
+        } else {
+            Task taskRemoved = tasks.get(taskNum - 1);
+            dukePrint("     Noted. I've removed this task:\n       " + taskRemoved.toString() + "\n     Now you have " + (tasks.size() - 1) + " tasks in the list.");
+            tasks.remove(taskNum - 1);
         }
     }
 
@@ -124,13 +121,17 @@ import java.util.Scanner;
                         throw new DukeException("     ☹ OOPS!!! There is no such task in your list");
                     }
                     tasks.get(taskNum).markAsDone();
-                    System.out.println("    ____________________________________________________________");
-                    System.out.println("     Nice! I've marked this task as done:");
-                    System.out.println("       [✓] " + tasks.get(taskNum).getDescription());
-                    System.out.println("    ____________________________________________________________");
-                    System.out.println();
+                    dukePrint("     Nice! I've marked this task as done:\n       [✓] " + tasks.get(taskNum).getDescription());
                 } else if (Arrays.asList(commands).contains(command.split(" ")[0])) {
                     add(command);
+                } else if (command.startsWith("delete")) {
+                    String[] words = command.split(" ");
+                    try {
+                        int taskNum = Integer.valueOf(words[1]);
+                        delete(taskNum);
+                    } catch (NumberFormatException e) {
+                        dukePrint("     Please input a valid task number.");
+                    }
                 } else {
                     throw new DukeException("     ☹ OOPS!!! I'm sorry, but I don't know what that means :-(");
                 }
@@ -141,8 +142,12 @@ import java.util.Scanner;
     }
 
     public static void throwDukeException(DukeException e) {
+        dukePrint(e.toString());
+    }
+
+    public static void dukePrint(String message) {
         System.out.println("    ____________________________________________________________");
-        System.out.println(e.toString());
+        System.out.println(message);
         System.out.println("    ____________________________________________________________");
         System.out.println();
     }
