@@ -22,7 +22,7 @@ import java.util.Scanner;
             + "    | |_| | |_| |   <  __/\n"
             + "    |____/ \\__,_|_|\\_\\___|\n";
     private static String[] commands = {"todo", "event", "deadline"};
-    public static String filePath = "../../../../data/duke.txt";
+    public static String filePath = "./data/duke.txt";
 
     public static void echo(String command) {
         dukePrint("     " + command);
@@ -140,6 +140,11 @@ import java.util.Scanner;
                 } else {
                     throw new DukeException("     ☹ OOPS!!! I'm sorry, but I don't know what that means :-(");
                 }
+                try {
+                    writeToFile();
+                } catch (IOException e) {
+                    dukePrint("     ☹ OOPS!!! I'm sorry, but I cannot save the file. Some error occurred.");
+                }
             } catch (DukeException e) {
                 throwDukeException(e);
             }
@@ -167,8 +172,7 @@ import java.util.Scanner;
     }
 
     public static void writeToFile() throws IOException {
-        File file = new File(filePath);
-        FileWriter fw = new FileWriter(file);
+        FileWriter fw = new FileWriter(filePath);
         String taskString = "";
         for (int i = 0; i < tasks.size(); i++) {
             taskString = taskString + tasks.get(i).toFile() + "\n";
@@ -201,10 +205,5 @@ import java.util.Scanner;
         } catch (FileNotFoundException e) {}
         greet();
         execCommand();
-        try {
-            writeToFile();
-        } catch (IOException e) {
-            System.out.println("     ☹ OOPS!!! I'm sorry, but I cannot save the file. Some error occurred.");
-        }
     }
 }
