@@ -21,9 +21,9 @@ public class Todo extends Task {
     @Override
     public String toString() {
         if (this.isDone) {
-            return "[T][✓] " + this.description;
+            return "[T][\u2714] " + this.description;
         } else {
-            return "[T][✗] " + this.description;
+            return "[T][\u2718] " + this.description;
         }
     }
 }

@@ -25,9 +25,9 @@ public class Event extends Task {
     @Override
     public String toString() {
         if (this.isDone) {
-            return "[E][✓] " + this.description + " (at: " + this.time + ")";
+            return "[E][\u2714] " + this.description + " (at: " + this.time + ")";
         } else {
-            return "[E][✗] " + this.description + " (at: " + this.time + ")";
+            return "[E][\u2718] " + this.description + " (at: " + this.time + ")";
         }
     }
 }
