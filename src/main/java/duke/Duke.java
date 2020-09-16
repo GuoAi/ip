@@ -5,6 +5,10 @@ import duke.task.Event;
 import duke.task.Task;
 import duke.task.Todo;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -18,6 +22,7 @@ import java.util.Scanner;
             + "    | |_| | |_| |   <  __/\n"
             + "    |____/ \\__,_|_|\\_\\___|\n";
     private static String[] commands = {"todo", "event", "deadline"};
+    public static String filePath = "../../../../data/duke.txt";
 
     public static void echo(String command) {
         dukePrint("     " + command);
@@ -141,6 +146,37 @@ import java.util.Scanner;
         }
     }
 
+    public static void loadFromFile(String fileName) throws FileNotFoundException {
+        File file = new File(fileName);
+        Scanner sc = new Scanner(file);
+        while (sc.hasNextLine()) {
+            String line = sc.nextLine();
+            String[] taskParts = line.split(" \\| ");
+            switch (taskParts[0]) {
+            case "T":
+                tasks.add(new Todo(taskParts[2], stringToBoolean(taskParts[1])));
+                break;
+            case "E":
+                tasks.add(new Event(taskParts[2], stringToBoolean(taskParts[1]), taskParts[3]));
+                break;
+            case "D":
+                tasks.add(new Deadline(taskParts[2], stringToBoolean(taskParts[1]), taskParts[3]));
+                break;
+            }
+        }
+    }
+
+    public static void writeToFile() throws IOException {
+        File file = new File(filePath);
+        FileWriter fw = new FileWriter(file);
+        String taskString = "";
+        for (int i = 0; i < tasks.size(); i++) {
+            taskString = taskString + tasks.get(i).toFile() + "\n";
+        }
+        fw.write(taskString);
+        fw.close();
+    }
+
     public static void throwDukeException(DukeException e) {
         dukePrint(e.toString());
     }
@@ -152,8 +188,23 @@ import java.util.Scanner;
         System.out.println();
     }
 
+    public static boolean stringToBoolean(String str) {
+        if (str.equals("0")) {
+            return false;
+        }
+        return true;
+    }
+
     public static void main(String[] args) {
+        try {
+            loadFromFile(filePath);
+        } catch (FileNotFoundException e) {}
         greet();
         execCommand();
+        try {
+            writeToFile();
+        } catch (IOException e) {
+            System.out.println("     ☹ OOPS!!! I'm sorry, but I cannot save the file. Some error occurred.");
+        }
     }
 }

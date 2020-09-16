@@ -8,6 +8,20 @@ public class Deadline extends Task {
         this.deadline = deadline;
     }
 
+    public Deadline(String description, boolean isDone, String deadline) {
+        super(description, isDone);
+        this.deadline = deadline;
+    }
+
+    @Override
+    public String toFile() {
+        if (isDone) {
+            return "D | 1 | " + description + " | " + deadline;
+        } else {
+            return "D | 0 | " + description + " | " + deadline;
+        }
+    }
+
     @Override
     public String toString() {
         if (this.isDone) {

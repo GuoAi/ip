@@ -8,6 +8,20 @@ public class Event extends Task {
         this.time = time;
     }
 
+    public Event(String description, boolean isDone, String time) {
+        super(description, isDone);
+        this.time = time;
+    }
+
+    @Override
+    public String toFile() {
+        if (isDone) {
+            return "E | 1 | " + description + " | " + time;
+        } else {
+            return "E | 0 | " + description + " | " + time;
+        }
+    }
+
     @Override
     public String toString() {
         if (this.isDone) {
