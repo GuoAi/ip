@@ -25,9 +25,11 @@ public class Deadline extends Task {
     @Override
     public String toString() {
         if (this.isDone) {
-            return "[D][\u2714] " + this.description + " (by: " + this.deadline + ")";
+//            return "[D][\u2714] " + this.description + " (by: " + this.deadline + ")";
+            return "[D][Y] " + this.description + " (by: " + this.deadline + ")";
         } else {
-            return "[D][\u2718] " + this.description + " (by: " + this.deadline + ")";
+//            return "[D][\u2718] " + this.description + " (by: " + this.deadline + ")";
+            return "[D][N] " + this.description + " (by: " + this.deadline + ")";
         }
     }
 }

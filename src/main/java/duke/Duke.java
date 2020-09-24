@@ -59,7 +59,8 @@ import java.util.Scanner;
                 try {
                     todoString = command.substring(5);
                 } catch (StringIndexOutOfBoundsException e) {
-                    throw new DukeException("     \u2639 OOPS!!! The description of a todo cannot be empty.");
+//                    throw new DukeException("     \u2639 OOPS!!! The description of a todo cannot be empty.");
+                    throw new DukeException("     :( OOPS!!! The description of a todo cannot be empty.");
                 }
                 task = new Todo(todoString);
                 tasks.add(task);
@@ -68,7 +69,8 @@ import java.util.Scanner;
                 try {
                     deadlineString = command.substring(9);
                 } catch (StringIndexOutOfBoundsException e) {
-                    throw new DukeException("     \u2639 OOPS!!! The description of a deadline cannot be empty.");
+//                    throw new DukeException("     \u2639 OOPS!!! The description of a deadline cannot be empty.");
+                    throw new DukeException("     :( OOPS!!! The description of a deadline cannot be empty.");
                 }
                 String[] deadlineStrings = deadlineString.split(" /by ");
                 try {
@@ -82,7 +84,8 @@ import java.util.Scanner;
                 try {
                     eventString = command.substring(6);
                 } catch (StringIndexOutOfBoundsException e) {
-                    throw new DukeException("     \u2639 OOPS!!! The description of an event cannot be empty.");
+//                    throw new DukeException("     \u2639 OOPS!!! The description of an event cannot be empty.");
+                    throw new DukeException("     :( OOPS!!! The description of an event cannot be empty.");
                 }
                 String[] eventStrings = eventString.split(" /at ");
                 try {
@@ -124,7 +127,8 @@ import java.util.Scanner;
                     String[] words = command.split(" ");
                     int taskNum = Integer.valueOf(words[1]) - 1;
                     if (taskNum >= tasks.size()) {
-                        throw new DukeException("     \u2639 OOPS!!! There is no such task in your list");
+//                        throw new DukeException("     \u2639 OOPS!!! There is no such task in your list");
+                        throw new DukeException("     :( OOPS!!! There is no such task in your list");
                     }
                     tasks.get(taskNum).markAsDone();
                     dukePrint("     Nice! I've marked this task as done:\n       [✓] " + tasks.get(taskNum).getDescription());
@@ -139,12 +143,14 @@ import java.util.Scanner;
                         dukePrint("     Please input a valid task number.");
                     }
                 } else {
-                    throw new DukeException("     \u2639 OOPS!!! I'm sorry, but I don't know what that means :-(");
+//                    throw new DukeException("     \u2639 OOPS!!! I'm sorry, but I don't know what that means :-(");
+                    throw new DukeException("     :( OOPS!!! I'm sorry, but I don't know what that means :-(");
                 }
                 try {
                     writeToFile();
                 } catch (IOException e) {
-                    dukePrint("     \u2639 OOPS!!! I'm sorry, but I cannot save the file. Some error occurred.");
+//                    dukePrint("     \u2639 OOPS!!! I'm sorry, but I cannot save the file. Some error occurred.");
+                    dukePrint("     :( OOPS!!! I'm sorry, but I cannot save the file. Some error occurred.");
                 }
             } catch (DukeException e) {
                 throwDukeException(e);
