@@ -1,16 +1,33 @@
 package duke.task;
 
+import duke.common.Messages;
+import duke.ui.Ui;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+
 public class Event extends Task {
     private String time;
 
     public Event(String description, String time) {
         super(description);
         this.time = time;
+        try {
+            this.time = Ui.formatDateTime(time);
+        } catch (DateTimeParseException e) {
+            Ui.dukePrint(Messages.WARNING_DATETIME);
+        }
     }
 
     public Event(String description, boolean isDone, String time) {
         super(description, isDone);
         this.time = time;
+        try {
+            this.time = Ui.formatDateTime(time);
+        } catch (DateTimeParseException e) {
+            Ui.dukePrint(Messages.WARNING_DATETIME);
+        }
     }
 
     @Override

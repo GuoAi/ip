@@ -3,6 +3,9 @@ package duke.ui;
 import duke.DukeException;
 import duke.common.Messages;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
 public class Ui {
@@ -39,5 +42,13 @@ public class Ui {
 
     public static void showError(DukeException e) {
         dukePrint(e.getMessage());
+    }
+
+    public static String formatDateTime(String time) throws DateTimeParseException {
+        DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("MMM dd yyy HH:mm");
+        LocalDateTime formattedDateTime = LocalDateTime.parse(time, inputFormatter);
+        String returnString = formattedDateTime.format(outputFormatter);
+        return returnString;
     }
 }
