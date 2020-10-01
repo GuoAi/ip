@@ -72,7 +72,7 @@ Format: `find KEYWORDS`
 Examples:  
 * `find book` returns all tasks whose descriptions contain string `book`, e.g.  
 Here is a sample return by `find book` command  
-    \____________________________________________________________  
+    \___________________________________________________\_________  
      Here are the matching tasks in your list:  
      1.[T][Y] read book  
      2.[D][Y] return book (by: June 6th)  
@@ -100,13 +100,13 @@ Format: `bye`
 ## Command Summary  
 | **Action** | **Format, Examples** |  
 | ---------- | -------------------- |  
-| **Todo** | `todo DESCRIPTION` <br><br> e.g. `todo read book` |  
-| **Deadline** | `deadline DESCRIPTION /by DEADLINE` <br><br> e.g. `deadline return book /by June 6th`, <br><br> `deadline return book /by 2021-06-06 12:00` |  
-| **Event** | `event DESCRIPTION /at TIME` <br><br> e.g. `event project meeting /at Aug 6th 2-4pm`, <br><br> `event project meeting /at 2021-08-06 14:00` |  
-| **Delete** | `delete INDEX` <br><br> e.g. `delete 2` |  
+| **Todo** | `todo DESCRIPTION` <br> e.g. `todo read book` |  
+| **Deadline** | `deadline DESCRIPTION /by DEADLINE` <br> e.g. `deadline return book /by June 6th`, <br> `deadline return book /by 2021-06-06 12:00` |  
+| **Event** | `event DESCRIPTION /at TIME` <br> e.g. `event project meeting /at Aug 6th 2-4pm`, <br> `event project meeting /at 2021-08-06 14:00` |  
+| **Delete** | `delete INDEX` <br> e.g. `delete 2` |  
 | **List** | `list` |    
-| **Find** | `find KEYWORDS` <br><br> e.g. `find book` |  
-| **Done** | `done INDEX` <br><br> e.g. `done 2` |  
+| **Find** | `find KEYWORDS` <br> e.g. `find book` |  
+| **Done** | `done INDEX` <br> e.g. `done 2` |  
 | **Bye** | `bye` |  
   
   
