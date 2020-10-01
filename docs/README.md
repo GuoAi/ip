@@ -98,13 +98,15 @@ Format: `bye`
   
   
 ## Command Summary  
-* `todo`: `todo DESCRIPTION` e.g. `todo read book`  
-* `deadline`: `deadline DESCRIPTION /by DEADLINE` e.g. `deadline return book /by June 6th`, `deadline return book /by 2021-06-06 12:00`  
-* `event`: `event DESCRIPTION /at TIME` e.g. `event project meeting /at Aug 6th 2-4pm`, `event project meeting /at 2021-08-06 14:00`  
-* `delete`: `delete INDEX` e.g. `delete 2`  
-* `list`: `list`  
-* `find`: `find KEYWORDS` e.g. `find book`  
-* `done`: `done INDEX` e.g. `done 2`  
-* `bye`: `bye`  
+| **Action** | **Format, Examples** |  
+| ---------- | -------------------- |  
+| **Todo** | `todo DESCRIPTION` <br><br> e.g. `todo read book` |  
+| **Deadline** | `deadline DESCRIPTION /by DEADLINE` <br><br> e.g. `deadline return book /by June 6th`, <br><br> `deadline return book /by 2021-06-06 12:00` |  
+| **Event** | `event DESCRIPTION /at TIME` <br><br> e.g. `event project meeting /at Aug 6th 2-4pm`, <br><br> `event project meeting /at 2021-08-06 14:00` |  
+| **Delete** | `delete INDEX` <br><br> e.g. `delete 2` |  
+| **List** | `list` |    
+| **Find** | `find KEYWORDS` <br><br> e.g. `find book` |  
+| **Done** | `done INDEX` <br><br> e.g. `done 2` |  
+| **Bye** | `bye` |  
   
   
