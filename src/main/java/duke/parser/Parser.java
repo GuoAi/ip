@@ -7,6 +7,7 @@ import duke.commands.DeadlineCommand;
 import duke.commands.DeleteCommand;
 import duke.commands.DoneCommand;
 import duke.commands.EventCommand;
+import duke.commands.FindCommand;
 import duke.commands.ListCommand;
 import duke.commands.TodoCommand;
 import duke.common.Messages;
@@ -62,6 +63,12 @@ public class Parser {
                 throw new DukeException(Messages.EXCEPTION_INVALID_INDEX);
             } catch (IndexOutOfBoundsException e) {
                 throw new DukeException(Messages.WARNING_NO_TASK);
+            }
+        case "find":
+            try {
+                return new FindCommand(words[1]);
+            } catch (IndexOutOfBoundsException e) {
+                throw new DukeException(Messages.EXCEPTION_FIND);
             }
         case "bye":
             return new ByeCommand();

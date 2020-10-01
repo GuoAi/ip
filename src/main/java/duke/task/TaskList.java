@@ -52,11 +52,7 @@ public class TaskList {
     public void listTask() {
         String message = "";
         for (int i = 0; i < tasks.size(); i++) {
-            if (i == 0) {
-                message = message + "     " + (i + 1) + "." + tasks.get(i).toString();
-            } else {
-                message = message + "\n     " + (i + 1) + "." + tasks.get(i).toString();
-            }
+            message = message + "\n     " + (i + 1) + "." + tasks.get(i).toString();
         }
         Ui.dukePrint(Messages.MESSAGE_LIST + message);
     }
@@ -67,6 +63,24 @@ public class TaskList {
         } else {
             tasks.get(index - 1).markAsDone();
             Ui.dukePrint(Messages.MESSAGE_DONE + tasks.get(index - 1).getDescription());
+        }
+    }
+
+    public void findTask(String keyword) {
+        ArrayList<Task> matchingTasks = new ArrayList<>();
+        int count = 0;
+        String message = "";
+        for (int i = 0; i < tasks.size(); i++) {
+            if (tasks.get(i).description.toLowerCase().contains(keyword.toLowerCase())) {
+                matchingTasks.add(tasks.get(i));
+                count++;
+                message = message + "\n     " + count + "." + tasks.get(i).toString();
+            }
+        }
+        if (!message.equals("")) {
+            Ui.dukePrint(Messages.MESSAGE_FIND + message);
+        } else {
+            Ui.dukePrint(Messages.MESSAGE_NOT_FOUND);
         }
     }
 
