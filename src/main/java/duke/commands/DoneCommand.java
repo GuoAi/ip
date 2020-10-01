@@ -2,6 +2,9 @@ package duke.commands;
 
 import duke.task.TaskList;
 
+/**
+ * Marks a Task, identified by its index in the task list, as done.
+ */
 public class DoneCommand extends Command {
 
     private int index;

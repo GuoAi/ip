@@ -6,6 +6,10 @@ import duke.storage.Storage;
 import duke.task.TaskList;
 import duke.ui.Ui;
 
+/**
+ * Entry point of the Duke application.
+ * Initializes the application and starts the interaction with the user.
+ */
 public class Duke {
 
     private Storage storage;
@@ -16,11 +20,14 @@ public class Duke {
         try {
             tasks = new TaskList(storage.load());
         } catch (DukeException e) {
-            Ui.showLoadingError();
+            Ui.showError(e);
             tasks = new TaskList();
         }
     }
 
+    /**
+     * Reads the user command and executes it, until the user issues the bye command.
+     */
     public void run() {
         Ui.showWelcome();
         boolean isExit = false;
@@ -42,6 +49,6 @@ public class Duke {
     }
 
     public static void main(String[] args) {
-        new Duke("data/tasks.txt").run();
+        new Duke(Storage.DEFAULT_STORAGE_FILEPATH).run();
     }
 }

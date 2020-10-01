@@ -7,9 +7,19 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
+/**
+ * Represents a deadline task in the task list.
+ */
 public class Deadline extends Task {
     private String deadline;
 
+    /**
+     * Constructor used when adding a new deadline task.
+     * By default, the deadline task is not done.
+     *
+     * @param description the description of the deadline task
+     * @param deadline the deadline of the task
+     */
     public Deadline(String description, String deadline) {
         super(description);
         this.deadline = deadline;
@@ -20,6 +30,13 @@ public class Deadline extends Task {
         }
     }
 
+    /**
+     * Convenience constructor used when loading from the storage file.
+     *
+     * @param description the description of the deadline task
+     * @param isDone true if the deadline task is done already, false otherwise
+     * @param deadline the deadline of the task
+     */
     public Deadline(String description, boolean isDone, String deadline) {
         super(description, isDone);
         this.deadline = deadline;
