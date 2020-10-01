@@ -24,4 +24,5 @@ public class Messages {
     public static final String EXCEPTION_INVALID_INDEX = "Please input a valid task index.";
     public static final String EXCEPTION_LOAD_FILE = ":( OOPS!!! Cannot load from file.";
     public static final String EXCEPTION_SAVE_FILE = ":( OOPS!!! Cannot save to file.";
+    public static final String WARNING_DATETIME = "If you want your DateTime to be formatted, you can input in this format: yyyy-MM-dd HH:mm";
 }
