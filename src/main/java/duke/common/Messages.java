@@ -22,6 +22,8 @@ public class Messages {
     public static final String MESSAGE_DONE = "Nice! I've marked this task as done:\n       [Y] ";
     public static final String EXCEPTION_INVALID_COMMAND = ":( OOPS!!! I'm sorry, but I don't know what that means. Please enter valid commands :-(";
     public static final String EXCEPTION_EMPTY_DESCRIPTION = ":( OOPS!!! The description of a task cannot be empty.";
+    public static final String EXCEPTION_EMPTY_DEADLINE = ":( OOPS!!! The deadline of a task cannot be empty.";
+    public static final String EXCEPTION_EMPTY_TIME = ":( OOPS!!! The time of an event task cannot be empty.";
     public static final String EXCEPTION_INVALID_DEADLINE = "Please enter your deadline in the correct format.\n     Example: deadline return book /by Sunday";
     public static final String EXCEPTION_INVALID_EVENT = "Please enter your event in the correct format.\n     Example: event project meeting /at Mon 2-4pm";
     public static final String EXCEPTION_INVALID_INDEX = "Please input a valid task index.";

@@ -30,6 +30,9 @@ public class Parser {
         switch (words[0].toLowerCase()) {
         case "todo":
             try {
+                if (words[1].trim().equals("")) {
+                    throw new DukeException(Messages.EXCEPTION_EMPTY_DESCRIPTION);
+                }
                 return new TodoCommand(words[1]);
             } catch (IndexOutOfBoundsException e) {
                 throw new DukeException(Messages.EXCEPTION_EMPTY_DESCRIPTION);
@@ -40,7 +43,13 @@ public class Parser {
             } catch (IndexOutOfBoundsException e) {
                 throw new DukeException(Messages.EXCEPTION_EMPTY_DESCRIPTION);
             }
+            if (wordparts[0].trim().equals("")) {
+                throw new DukeException(Messages.EXCEPTION_EMPTY_DESCRIPTION);
+            }
             try {
+                if (wordparts[1].trim().equals("")) {
+                    throw new DukeException(Messages.EXCEPTION_EMPTY_DEADLINE);
+                }
                 return new DeadlineCommand(wordparts[0], wordparts[1]);
             } catch (IndexOutOfBoundsException e) {
                 throw new DukeException(Messages.EXCEPTION_INVALID_DEADLINE);
@@ -51,7 +60,13 @@ public class Parser {
             } catch (IndexOutOfBoundsException e) {
                 throw new DukeException(Messages.EXCEPTION_EMPTY_DESCRIPTION);
             }
+            if (wordparts[0].trim().equals("")) {
+                throw new DukeException(Messages.EXCEPTION_EMPTY_DESCRIPTION);
+            }
             try {
+                if (wordparts[1].trim().equals("")) {
+                    throw new DukeException(Messages.EXCEPTION_EMPTY_TIME);
+                }
                 return new EventCommand(wordparts[0], wordparts[1]);
             } catch (IndexOutOfBoundsException e) {
                 throw new DukeException(Messages.EXCEPTION_INVALID_EVENT);
@@ -76,7 +91,7 @@ public class Parser {
             }
         case "find":
             try {
-                return new FindCommand(words[1]);
+                return new FindCommand(words[1].trim());
             } catch (IndexOutOfBoundsException e) {
                 throw new DukeException(Messages.EXCEPTION_FIND);
             }

@@ -37,14 +37,10 @@ public class Duke {
                 Command c = Parser.parse(fullCommand);
                 c.execute(tasks);
                 isExit = c.isExit();
+                storage.save(tasks);
             } catch (DukeException e) {
                 Ui.showError(e);
             }
-        }
-        try {
-            storage.save(tasks);
-        } catch (DukeException e) {
-            Ui.showError(e);
         }
     }
 

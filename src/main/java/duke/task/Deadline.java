@@ -40,11 +40,6 @@ public class Deadline extends Task {
     public Deadline(String description, boolean isDone, String deadline) {
         super(description, isDone);
         this.deadline = deadline;
-        try {
-            this.deadline = Ui.formatDateTime(deadline);
-        } catch (DateTimeParseException e) {
-            Ui.dukePrint(Messages.WARNING_DATETIME);
-        }
     }
 
     @Override

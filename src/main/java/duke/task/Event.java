@@ -40,11 +40,6 @@ public class Event extends Task {
     public Event(String description, boolean isDone, String time) {
         super(description, isDone);
         this.time = time;
-        try {
-            this.time = Ui.formatDateTime(time);
-        } catch (DateTimeParseException e) {
-            Ui.dukePrint(Messages.WARNING_DATETIME);
-        }
     }
 
     @Override

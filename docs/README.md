@@ -91,7 +91,7 @@ Examples:
 * `list` followed by `done 2` marks the 2nd task in the task list as done.
 
 ### Exiting the Program and Saving TaskList to File: `bye`  
-Exits the program. TaskList data are saved into a file automatically after the program is terminated.  
+Exits the program. TaskList data are saved into a file automatically.  
 There is no need to save manually.  
   
 Format: `bye`  
