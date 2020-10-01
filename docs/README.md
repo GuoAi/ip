@@ -72,12 +72,12 @@ Format: `find KEYWORDS`
 Examples:  
 * `find book` returns all tasks whose descriptions contain string `book`, e.g.  
 Here is a sample return by `find book` command  
-    \___________________________________________________\_________  
+    \____________________________________________________________  
      Here are the matching tasks in your list:  
      1.[T][Y] read book  
      2.[D][Y] return book (by: June 6th)  
      3.[T][N] borrow book  
-    \___________________________________________________\_________  
+    \____________________________________________________________  
 
 ### Marking a Task as Done: `done`  
 Marks the specified person as done.  
