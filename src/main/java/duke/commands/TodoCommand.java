@@ -4,6 +4,10 @@ import duke.common.Messages;
 import duke.task.TaskList;
 import duke.ui.Ui;
 
+
+/**
+ * Adds a Todo to the TaskList.
+ */
 public class TodoCommand extends Command {
 
     private String description;

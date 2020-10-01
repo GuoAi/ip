@@ -4,6 +4,9 @@ import duke.common.Messages;
 import duke.task.TaskList;
 import duke.ui.Ui;
 
+/**
+ * Adds an Event to the TaskList.
+ */
 public class EventCommand extends Command {
 
     private String description;
