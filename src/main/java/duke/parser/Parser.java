@@ -12,8 +12,18 @@ import duke.commands.ListCommand;
 import duke.commands.TodoCommand;
 import duke.common.Messages;
 
+/**
+ * Parses use input.
+ */
 public class Parser {
 
+    /**
+     * Parses user input into command for execution.
+     *
+     * @param fullCommand full user input string
+     * @return the command based on the user input
+     * @throws DukeException if user input commands are not in the standard format
+     */
     public static Command parse(String fullCommand) throws DukeException {
         String[] words = fullCommand.split(" ", 2);
         String wordparts[];

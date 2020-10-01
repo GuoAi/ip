@@ -4,6 +4,9 @@ import duke.common.Messages;
 import duke.task.TaskList;
 import duke.ui.Ui;
 
+/**
+ * Adds a Deadline to the TaskList.
+ */
 public class DeadlineCommand extends Command {
 
     private String description;

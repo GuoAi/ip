@@ -16,14 +16,25 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Used to load and save task list data.
+ */
 public class Storage {
 
     private String filePath;
+    /** Default file path used. */
+    public static final String DEFAULT_STORAGE_FILEPATH = "data/tasks.txt";
 
     public Storage(String filePath) {
         this.filePath = filePath;
     }
 
+    /**
+     * Loads the task list data from the storage, and then returns it.
+     *
+     * @return ArrayList of {@code Task} from the storage file.
+     * @throws DukeException if the storage file does not exist, or is not a regular file.
+     */
     public ArrayList<Task> load() throws DukeException {
         File file = new File(filePath);
         Scanner sc;
@@ -51,6 +62,12 @@ public class Storage {
         return tasks;
     }
 
+    /**
+     * Saves the {@code TaskList} data to the storage file.
+     *
+     * @param tasks the {@code TaskList} to be saved to the storage file
+     * @throws DukeException if there were errors storing data to file.
+     */
     public void save(TaskList tasks) throws DukeException {
         FileWriter fw;
         try {

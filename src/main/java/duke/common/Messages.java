@@ -1,5 +1,8 @@
 package duke.common;
 
+/**
+ * Container for user visible messages.
+ */
 public class Messages {
 
     public static final String DIVIDER = "    ____________________________________________________________";
