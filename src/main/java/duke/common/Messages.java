@@ -13,7 +13,7 @@ public class Messages {
     public static final String MESSAGE_ADDTASK = "Got it. I've added this task:\n       ";
     public static final String MESSAGE_STATUS_FIRST = "\n     Now you have ";
     public static final String MESSAGE_STATUS_LAST = " tasks in the list.";
-    public static final String MESSAGE_LIST = "Here are the tasks in your list:\n";
+    public static final String MESSAGE_LIST = "Here are the tasks in your list:";
     public static final String MESSAGE_DELETE = "Noted. I've removed this task:\n       ";
     public static final String WARNING_NO_TASK = "You do not have this task in the list.";
     public static final String MESSAGE_DONE = "Nice! I've marked this task as done:\n       [Y] ";
@@ -25,4 +25,7 @@ public class Messages {
     public static final String EXCEPTION_LOAD_FILE = ":( OOPS!!! Cannot load from file.";
     public static final String EXCEPTION_SAVE_FILE = ":( OOPS!!! Cannot save to file.";
     public static final String WARNING_DATETIME = "If you want your DateTime to be formatted, you can input in this format: yyyy-MM-dd HH:mm";
+    public static final String MESSAGE_FIND = "Here are the matching tasks in your list:";
+    public static final String MESSAGE_NOT_FOUND = "There are no matching tasks in your list.";
+    public static final String EXCEPTION_FIND = ":( OOPS!!! The keyword of a find command cannot be empty.";
 }
