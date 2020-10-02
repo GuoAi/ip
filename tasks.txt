@@ -1,0 +1,7 @@
+T | 1 | read book
+D | 0 | return book | Jun 06 2021 12:00
+E | 0 | project meeting | Aug 06 2021 14:00
+T | 0 | borrow book
+D | 0 | return book | Sunday
+E | 0 | project meeting | Mon 2-4pm
+D | 0 | do homework | no idea :-p
