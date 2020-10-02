@@ -2,10 +2,10 @@
   
 ## Quick Start  
 1. Ensure you have Java `11` or above installed in your Computer.  
-2. Download the latest `duke.jar`.  
+2. Download the latest `ip.jar`.  
 3. Copy the file to the folder you want to use as the home folder for your Duke.  
 4. Use your terminal or command prompt to go to the working directory of your Duke.  
-5. Type the command `java -jar duke.jar` to start the program.  
+5. Type the command `java -jar ip.jar` to start the program.  
 6. Type the command in the command box and press Enter to execute it. e.g. typing `list` and pressing Enter will list all your tasks.  
 Some example commands you can try:  
     * `list`: Lists all tasks  

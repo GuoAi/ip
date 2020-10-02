@@ -23,7 +23,7 @@ public class Storage {
 
     private String filePath;
     /** Default file path used. */
-    public static final String DEFAULT_STORAGE_FILEPATH = "data/tasks.txt";
+    public static final String DEFAULT_STORAGE_FILEPATH = "tasks.txt";
 
     public Storage(String filePath) {
         this.filePath = filePath;
