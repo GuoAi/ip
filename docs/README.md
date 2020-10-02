@@ -16,7 +16,12 @@ Some example commands you can try:
 7. Refer to the Features below for details of each command.  
   
   
-## Features   
+## Features  
+
+#### Notes about the command format:  
+* Words in `UPPER_CASE` are the parameters to be suppplied by the user.  
+e.g. in `todo DESCRIPTION`, `DESCRIPTION` is a parameter which can be used as `todo read book`.  
+* Parameters must follow the exact order specified in this user guide.  
   
 ### Adding a Todo Task: `todo`  
 Adds a Todo task to the task list. 
@@ -94,7 +99,12 @@ Format: `done INDEX`
 * The index **must be a positive integer** 1, 2, 3, ...  
   
 Examples:  
-* `list` followed by `done 2` marks the 2nd task in the task list as done.
+* `list` followed by `done 2` marks the 2nd task in the task list as done.  
+  
+### Viewing help: `help`  
+Shows program usage instructions.  
+  
+Format: `help`    
 
 ### Exiting the Program and Saving TaskList to File: `bye`  
 Exits the program. TaskList data are saved into a file automatically.  
@@ -115,6 +125,7 @@ Format: `bye`
 | **List** | `list` |    
 | **Find** | `find KEYWORDS` <br> e.g. `find book` |  
 | **Done** | `done INDEX` <br> e.g. `done 2` |  
+| **Help** | `help` <br> e.g. `help` |
 | **Bye** | `bye` |  
   
   

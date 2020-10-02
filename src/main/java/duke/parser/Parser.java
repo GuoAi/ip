@@ -9,6 +9,7 @@ import duke.commands.DeleteCommand;
 import duke.commands.DoneCommand;
 import duke.commands.EventCommand;
 import duke.commands.FindCommand;
+import duke.commands.HelpCommand;
 import duke.commands.ListCommand;
 import duke.commands.TodoCommand;
 import duke.common.Messages;
@@ -98,6 +99,8 @@ public class Parser {
             } catch (IndexOutOfBoundsException e) {
                 throw new DukeException(Messages.EXCEPTION_FIND);
             }
+        case "help":
+            return new HelpCommand();
         case "bye":
             return new ByeCommand();
         default:

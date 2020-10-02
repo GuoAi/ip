@@ -27,8 +27,9 @@ public class Messages {
     public static final String EXCEPTION_INVALID_DEADLINE = "Please enter your deadline in the correct format.\n     Example: deadline return book /by Sunday";
     public static final String EXCEPTION_INVALID_EVENT = "Please enter your event in the correct format.\n     Example: event project meeting /at Mon 2-4pm";
     public static final String EXCEPTION_INVALID_INDEX = "Please input a valid task index.";
-    public static final String EXCEPTION_LOAD_FILE = "OOPS!!! The file cannot be loaded. Maybe this is your first time using Duke?";
+    public static final String EXCEPTION_LOAD_FILE = "The file cannot be loaded. Maybe this is your first time using Duke?";
     public static final String EXCEPTION_SAVE_FILE = ":( OOPS!!! Cannot save to file.";
+    public static final String MESSAGE_NEW_FILE = "I have created a new tasks.txt file for you. :) Type some commands and see it.";
     public static final String WARNING_DATETIME = "If you want your DateTime to be formatted, you can input in this format: yyyy-MM-dd HH:mm";
     public static final String MESSAGE_FIND = "Here are the matching tasks in your list:";
     public static final String MESSAGE_NOT_FOUND = "There are no matching tasks in your list.";

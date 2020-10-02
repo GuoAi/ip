@@ -1,6 +1,7 @@
 package duke;
 
 import duke.commands.Command;
+import duke.common.Messages;
 import duke.parser.Parser;
 import duke.storage.Storage;
 import duke.task.TaskList;
@@ -22,6 +23,7 @@ public class Duke {
         } catch (DukeException e) {
             Ui.showError(e);
             tasks = new TaskList();
+            Ui.dukePrint(Messages.MESSAGE_NEW_FILE);
         }
     }
 
