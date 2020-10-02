@@ -2,6 +2,7 @@ package duke.parser;
 
 import duke.DukeException;
 import duke.commands.ByeCommand;
+import duke.commands.ClearCommand;
 import duke.commands.Command;
 import duke.commands.DeadlineCommand;
 import duke.commands.DeleteCommand;
@@ -81,6 +82,8 @@ public class Parser {
             }
         case "list":
             return new ListCommand();
+        case "clear":
+            return new ClearCommand();
         case "done":
             try {
                 return new DoneCommand(Integer.parseInt(words[1]));

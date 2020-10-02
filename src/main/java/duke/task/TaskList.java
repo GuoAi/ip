@@ -91,10 +91,22 @@ public class TaskList {
      */
     public void listTask() {
         String message = "";
+        if (tasks.size() == 0) {
+            Ui.dukePrint(Messages.MESSAGE_EMPTY_LIST);
+            return;
+        }
         for (int i = 0; i < tasks.size(); i++) {
             message = message + "\n     " + (i + 1) + "." + tasks.get(i).toString();
         }
         Ui.dukePrint(Messages.MESSAGE_LIST + message);
+    }
+
+    /**
+     * Clears all the tasks in the task list.
+     */
+    public void clearTask() {
+        tasks = new ArrayList<>();
+        Ui.dukePrint(Messages.MESSAGE_CLEAR);
     }
 
     /**

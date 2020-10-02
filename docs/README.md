@@ -11,6 +11,7 @@ Some example commands you can try:
     * `list`: Lists all tasks  
     * `todo read book`: Adds a `Todo` task with description `read book` to the task list  
     * `delete 3`: Deletes the 3rd task shown in the current list.  
+    * `clear`: Deletes all tasks.
     * `bye`: Exits the app.  
 7. Refer to the Features below for details of each command.  
   
@@ -54,6 +55,11 @@ Format: `delete INDEX`
   
 Examples:  
 * `list` followed by `delete 2` deletes the 2nd task in the task list.  
+  
+### Clearing All Entries: `clear`  
+Clears all entries from the task list.  
+  
+Format: `clear`  
   
 ### Listing All Tasks: `list`  
 Shows a list of all tasks in the task list.  
@@ -105,6 +111,7 @@ Format: `bye`
 | **Deadline** | `deadline DESCRIPTION /by DEADLINE` <br> e.g. `deadline return book /by June 6th`, <br> `deadline return book /by 2021-06-06 12:00` |  
 | **Event** | `event DESCRIPTION /at TIME` <br> e.g. `event project meeting /at Aug 6th 2-4pm`, <br> `event project meeting /at 2021-08-06 14:00` |  
 | **Delete** | `delete INDEX` <br> e.g. `delete 2` |  
+| **Clear** | `clear` |
 | **List** | `list` |    
 | **Find** | `find KEYWORDS` <br> e.g. `find book` |  
 | **Done** | `done INDEX` <br> e.g. `done 2` |  
